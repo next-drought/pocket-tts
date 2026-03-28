@@ -105,6 +105,82 @@ uv run python transcript_to_audio_pocket.py \
 
 Preset voices work even when custom voice cloning access is unavailable.
 
+## Use From AI Tools
+
+This repo can also be used from AI coding tools through the local runner and skill/plugin setup created on the machine.
+
+### Local runner
+
+The reusable runner lives at:
+
+```bash
+/Users/peteryang/plugins/text2audio/scripts/text2audio.sh
+```
+
+It defaults to:
+
+- Pocket TTS repo: `/Users/peteryang/DEV/pocket-tts`
+- voice state: `/Users/peteryang/DEV/pocket-tts/PYang_Voice.safetensors`
+
+Runner examples:
+
+```bash
+/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+  --transcript-file /Users/peteryang/DEV/pocket-tts/03292026_transcript.txt \
+  --output /Users/peteryang/DEV/pocket-tts/out_ai.wav
+```
+
+```bash
+/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+  --text "Hello world from Pocket TTS." \
+  --output /Users/peteryang/DEV/pocket-tts/hello_ai.wav
+```
+
+### Codex
+
+A local plugin and installed Codex skill were created for this workflow.
+
+Paths:
+
+- plugin manifest: `/Users/peteryang/plugins/text2audio/.codex-plugin/plugin.json`
+- plugin runner: `/Users/peteryang/plugins/text2audio/scripts/text2audio.sh`
+- Codex skill: `/Users/peteryang/.codex/skills/text2audio/SKILL.md`
+- Codex skill metadata: `/Users/peteryang/.codex/skills/text2audio/agents/openai.yaml`
+- local marketplace entry: `/Users/peteryang/.agents/plugins/marketplace.json`
+
+After restarting or reloading the Codex client, the skill can be triggered in one of these ways:
+
+- type `/text2audio`
+- invoke `$text2audio`
+- ask naturally, for example: "convert this transcript to audio"
+
+Important:
+
+- whether `/text2audio` appears in slash-command autocomplete depends on the Codex client UI
+- the skill is installed correctly, but some clients only rescan skills on restart
+
+### Claude Code
+
+Claude Code does not automatically reuse Codex skills or plugin manifests.
+
+The practical way to use the same capability in Claude Code is to call the same local runner script directly:
+
+```bash
+/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+  --transcript-file /path/to/transcript.txt \
+  --output /path/to/output.wav
+```
+
+or:
+
+```bash
+/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+  --text "Read this paragraph aloud." \
+  --output /path/to/output.wav
+```
+
+If you want a Claude-side shortcut later, build it as a Claude custom command that wraps this same runner.
+
 ## Script Options
 
 Basic form:
