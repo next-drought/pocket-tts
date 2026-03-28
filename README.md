@@ -107,14 +107,23 @@ Preset voices work even when custom voice cloning access is unavailable.
 
 ## Use From AI Tools
 
-This repo can also be used from AI coding tools through the local runner and skill/plugin setup created on the machine.
+This repo can also be used from AI coding tools through the local runner and skill/plugin setup.
+
+The versioned copies live in:
+
+- `tools/text2audio/.codex-plugin/plugin.json`
+- `tools/text2audio/scripts/text2audio.sh`
+- `tools/text2audio/skills/text2audio/SKILL.md`
+- `tools/text2audio/skills/text2audio/agents/openai.yaml`
+- `tools/text2audio/marketplace.example.json`
+- `tools/text2audio/README.md`
 
 ### Local runner
 
 The reusable runner lives at:
 
 ```bash
-/Users/peteryang/plugins/text2audio/scripts/text2audio.sh
+./tools/text2audio/scripts/text2audio.sh
 ```
 
 It defaults to:
@@ -125,13 +134,13 @@ It defaults to:
 Runner examples:
 
 ```bash
-/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+./tools/text2audio/scripts/text2audio.sh \
   --transcript-file /Users/peteryang/DEV/pocket-tts/03292026_transcript.txt \
   --output /Users/peteryang/DEV/pocket-tts/out_ai.wav
 ```
 
 ```bash
-/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+./tools/text2audio/scripts/text2audio.sh \
   --text "Hello world from Pocket TTS." \
   --output /Users/peteryang/DEV/pocket-tts/hello_ai.wav
 ```
@@ -142,13 +151,13 @@ A local plugin and installed Codex skill were created for this workflow.
 
 Paths:
 
-- plugin manifest: `/Users/peteryang/plugins/text2audio/.codex-plugin/plugin.json`
-- plugin runner: `/Users/peteryang/plugins/text2audio/scripts/text2audio.sh`
-- Codex skill: `/Users/peteryang/.codex/skills/text2audio/SKILL.md`
-- Codex skill metadata: `/Users/peteryang/.codex/skills/text2audio/agents/openai.yaml`
-- local marketplace entry: `/Users/peteryang/.agents/plugins/marketplace.json`
+- repo plugin manifest: `tools/text2audio/.codex-plugin/plugin.json`
+- repo plugin runner: `tools/text2audio/scripts/text2audio.sh`
+- repo skill: `tools/text2audio/skills/text2audio/SKILL.md`
+- repo skill metadata: `tools/text2audio/skills/text2audio/agents/openai.yaml`
+- sample marketplace entry: `tools/text2audio/marketplace.example.json`
 
-After restarting or reloading the Codex client, the skill can be triggered in one of these ways:
+To install it into Codex, copy or symlink the skill to `~/.codex/skills/text2audio`, then restart or reload the Codex client. After that, the skill can be triggered in one of these ways:
 
 - type `/text2audio`
 - invoke `$text2audio`
@@ -163,10 +172,10 @@ Important:
 
 Claude Code does not automatically reuse Codex skills or plugin manifests.
 
-The practical way to use the same capability in Claude Code is to call the same local runner script directly:
+The practical way to use the same capability in Claude Code is to call the same runner script directly:
 
 ```bash
-/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+./tools/text2audio/scripts/text2audio.sh \
   --transcript-file /path/to/transcript.txt \
   --output /path/to/output.wav
 ```
@@ -174,12 +183,14 @@ The practical way to use the same capability in Claude Code is to call the same 
 or:
 
 ```bash
-/Users/peteryang/plugins/text2audio/scripts/text2audio.sh \
+./tools/text2audio/scripts/text2audio.sh \
   --text "Read this paragraph aloud." \
   --output /path/to/output.wav
 ```
 
 If you want a Claude-side shortcut later, build it as a Claude custom command that wraps this same runner.
+
+For full installation notes, see `tools/text2audio/README.md`.
 
 ## Script Options
 

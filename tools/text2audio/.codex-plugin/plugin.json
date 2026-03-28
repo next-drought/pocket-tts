@@ -1,0 +1,40 @@
+{
+  "name": "text2audio",
+  "version": "0.1.0",
+  "description": "Generate WAV audio from transcript files or pasted text using the local Pocket TTS fork.",
+  "author": {
+    "name": "Peter Yang",
+    "email": "peteryang@Peters-MacBook-Pro-2.local",
+    "url": "https://github.com/next-drought"
+  },
+  "homepage": "https://github.com/next-drought/pocket-tts",
+  "repository": "https://github.com/next-drought/pocket-tts",
+  "license": "MIT",
+  "keywords": [
+    "tts",
+    "audio",
+    "transcript",
+    "pocket-tts"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Text2Audio",
+    "shortDescription": "Turn a transcript or pasted text into a WAV file.",
+    "longDescription": "Runs the local Pocket TTS transcript wrapper with the default exported PYang voice state, supporting either transcript files or direct text input.",
+    "developerName": "Peter Yang",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/next-drought/pocket-tts",
+    "privacyPolicyURL": "https://github.com/next-drought/pocket-tts",
+    "termsOfServiceURL": "https://github.com/next-drought/pocket-tts",
+    "defaultPrompt": [
+      "/text2audio transcript=/path/to/file.txt output=/path/to/out.wav",
+      "/text2audio text=\"Read this paragraph aloud\" output=./out.wav",
+      "/text2audio transcript=/path/to/file.txt output=./out.wav max_tokens=50"
+    ],
+    "brandColor": "#2563EB"
+  }
+}

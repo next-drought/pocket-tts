@@ -1,0 +1,20 @@
+{
+  "name": "peter-yang-local",
+  "interface": {
+    "displayName": "Peter Yang Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "text2audio",
+      "source": {
+        "source": "local",
+        "path": "./plugins/text2audio"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

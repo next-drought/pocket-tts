@@ -1,0 +1,4 @@
+interface:
+  display_name: "Text2Audio"
+  short_description: "Convert text into WAV audio."
+  default_prompt: "Use $text2audio to turn a transcript file or pasted text into a WAV with the local Pocket TTS setup."
