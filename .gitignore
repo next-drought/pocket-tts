@@ -81,6 +81,7 @@ profile_output*
 *.wav
 *.model
 *.pt
+!PYang_Voice.safetensors
 
 # Agents files, use a symlink to AGENTS.md instead. 
 CLAUDE.md
